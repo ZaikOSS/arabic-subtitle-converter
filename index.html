@@ -10,24 +10,28 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-</head>
-<body>
     <header>
         <div class="header-content">
+            <div class="language-switcher">
+                <button id="languageToggle" class="lang-btn" aria-label="Switch language">
+                    <span class="lang-text">EN</span>
+                    <span class="lang-icon">🌐</span>
+                </button>
+            </div>
             <h1>محول ترجمات العربية</h1>
-            <p class="subtitle">إصلاح مشاكل الترميز في ملفات الساب تيتل</p>
+            <p class="subtitle">إصلاح مشاكل الترميز في ملفات الترجمة</p>
         </div>
     </header>
 
     <main>
         <section class="hero">
             <div class="hero-content">
-                <h2>حل مشاكل الترميز في ملفات الساب تيتل العربية</h2>
-                <p>هل تظهر الترجمات العربية الخاصة بك كرموز غريبة؟ هذا الأداة تقوم بإصلاح ملفات الساب تيتل المحفوظة بترميز خاطئ (Windows-1256) عن طريق تحويلها إلى ترميز UTF-8 مع الحفاظ على جميع الأحرف العربية.</p>
+                <h2>حل مشاكل الترميز في ملفات الترجمة العربية</h2>
+                <p>هل تظهر الترجمات العربية الخاصة بك كرموز غريبة؟ هذا الأداة تقوم بإصلاح ملفات الترجمة المحفوظة بترميز خاطئ (Windows-1256) عن طريق تحويلها إلى ترميز UTF-8 مع الحفاظ على جميع الأحرف العربية.</p>
                 <div class="features">
                     <div class="feature">
                         <span>📁</span>
-                        <p>يدعم جميع صيغ ملفات الساب تيتل (.srt, .sub)</p>
+                        <p>يدعم جميع صيغ ملفات الترجمة (.srt, .sub)</p>
                     </div>
                     <div class="feature">
                         <span>⚡</span>
@@ -44,8 +48,8 @@
         <section class="converter-section">
             <div class="converter-container">
                 <div class="file-upload-area" id="dropZone">
-                    <img src="assets/upload-icon.svg" alt="Upload icon" class="upload-icon">
-                    <p>اسحب وأسقط ملف الساب تيتل هنا أو</p>
+                    <img src="images/upload-file-svgrepo-com.svg" alt="Upload icon" class="upload-icon">
+                    <p>اسحب وأسقط ملف الترجمة هنا أو</p>
                     <label for="subtitleFile" class="file-select-btn">اختر ملف</label>
                     <input type="file" id="subtitleFile" accept=".srt,.sub,.txt">
                     <p class="file-requirements">(يدعم ملفات .srt, .sub بحجم يصل إلى 5MB)</p>
@@ -85,7 +89,7 @@
                 </div>
                 <div class="footer-text">
                     <p>صنع بفخر من قبل جابوني</p>
-                    <a href="https://discord.gg/bVwqg3Q6" target="_blank" class="discord-link">
+                    <a href="images/discord-icon-svgrepo-com.svg" target="_blank" class="discord-link">
                         <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" 
                              alt="Discord" 
                              class="discord-logo">
@@ -95,7 +99,7 @@
             </div>
             <div class="footer-right">
                 <a href="https://wa.me/16099446992" target="_blank" class="whatsapp-link">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+                    <img src="images/whatsapp-color-svgrepo-com.svg" 
                          alt="WhatsApp" 
                          class="whatsapp-logo">
                          تواصل معنا عبر الواتساب

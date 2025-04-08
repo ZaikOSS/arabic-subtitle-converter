@@ -34,6 +34,195 @@ const windows1256ToUtf8 = {
     0xFC: 0x00FC, 0xFD: 0x200E, 0xFE: 0x200F, 0xFF: 0x06D2
 };
 
+// Language Toggle Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const languageToggle = document.getElementById('languageToggle');
+    const htmlElement = document.documentElement;
+
+    // Complete translations object
+    const translations = {
+        ar: {
+            // Header
+            title: "محول ترجمات العربية",
+            subtitle: "إصلاح مشاكل الترميز في ملفات الترجمة",
+            
+            // Hero Section
+            heroTitle: "حل مشاكل الترميز في ملفات الترجمة العربية",
+            heroText: "هل تظهر الترجمات العربية الخاصة بك كرموز غريبة؟ هذا الأداة تقوم بإصلاح ملفات الترجمة المحفوظة بترميز خاطئ (Windows-1256) عن طريق تحويلها إلى ترميز UTF-8 مع الحفاظ على جميع الأحرف العربية.",
+            features: [
+                "يدعم جميع صيغ ملفات الترجمة (.srt, .sub)",
+                "تحويل سريع بدون حاجة لتثبيت برامج",
+                "معالجة الملفات تتم على جهازك فقط"
+            ],
+            
+            // Converter Section
+            fileUpload: "اسحب وأسقط ملف الترجمة هنا أو",
+            fileButton: "اختر ملف",
+            fileRequirements: "(يدعم ملفات .srt, .sub بحجم يصل إلى 5MB)",
+            outputLabel: "صيغة الملف الناتج:",
+            formatOptions: ["نفس صيغة الملف الأصلي", ".srt", ".sub", ".txt"],
+            convertBtn: "تحويل الملف",
+            downloadBtn: "تنزيل الملف المحول",
+            
+            // Footer
+            madeBy: "صنع بفخر من قبل جابوني",
+            joinCommunity: "انضم إلى مجتمعنا",
+            contactUs: "تواصل معنا عبر الواتساب",
+            copyright: "© 2025 Japoni . جميع الحقوق محفوظة.",
+            
+            // Status Messages
+            statusMessages: {
+                fileTooLarge: 'الملف كبير جدًا. الحد الأقصى للحجم هو 5MB.',
+                invalidExtension: 'صيغة الملف غير مدعومة. الرجاء اختيار ملف .srt أو .sub',
+                noFileSelected: 'الرجاء اختيار ملف أولاً',
+                conversionError: 'حدث خطأ أثناء التحويل:',
+                readError: 'حدث خطأ أثناء قراءة الملف. الرجاء المحاولة مرة أخرى.',
+                success: 'تم تحويل الملف بنجاح! الترجمات يجب أن تظهر بشكل صحيح الآن.'
+            },
+            fileSizeUnits: ['بايت', 'كيلوبايت', 'ميجابايت']
+        },
+        en: {
+            // Header
+            title: "Arabic Subtitle Converter",
+            subtitle: "Fix subtitle encoding issues",
+            
+            // Hero Section
+            heroTitle: "Solve Arabic Subtitle Encoding Problems",
+            heroText: "Are your Arabic subtitles showing as gibberish? This tool fixes subtitle files saved in the wrong encoding (Windows-1256) by converting them to UTF-8 while preserving all Arabic characters.",
+            features: [
+                "Supports all subtitle formats (.srt, .sub)",
+                "Fast conversion - no software needed",
+                "Files processed locally on your device"
+            ],
+            
+            // Converter Section
+            fileUpload: "Drag & drop your subtitle file here or",
+            fileButton: "Select File",
+            fileRequirements: "(Supports .srt, .sub files up to 5MB)",
+            outputLabel: "Output format:",
+            formatOptions: ["Same as original", ".srt", ".sub", ".txt"],
+            convertBtn: "Convert File",
+            downloadBtn: "Download Converted File",
+            
+            // Footer
+            madeBy: "Proudly made by Japoni",
+            joinCommunity: "Join our community",
+            contactUs: "Contact us on WhatsApp",
+            copyright: "© 2025 Japoni. All rights reserved.",
+            
+            // Status Messages
+            statusMessages: {
+                fileTooLarge: 'File too large. Maximum size is 5MB.',
+                invalidExtension: 'Unsupported file format. Please choose .srt or .sub file',
+                noFileSelected: 'Please select a file first',
+                conversionError: 'Error converting file:',
+                readError: 'Error reading file. Please try again.',
+                success: 'File converted successfully! Your subtitles should now display correctly.'
+            },
+            fileSizeUnits: ['bytes', 'KB', 'MB']
+        }
+    };
+
+    // Initialize language
+    let currentLang = localStorage.getItem('preferredLanguage') || 'ar';
+    updateLanguage();
+
+    // Toggle language
+    function toggleLanguage() {
+        currentLang = currentLang === 'ar' ? 'en' : 'ar';
+        localStorage.setItem('preferredLanguage', currentLang);
+        updateLanguage();
+    }
+
+    // Update all text elements while preserving images
+    function updateLanguage() {
+        const lang = translations[currentLang];
+        
+        // Update button text
+        languageToggle.querySelector('.lang-text').textContent = currentLang === 'ar' ? 'EN' : 'AR';
+        
+        // Update HTML attributes
+        htmlElement.lang = currentLang;
+        htmlElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+        
+        // Update document title
+        document.title = currentLang === 'ar' 
+            ? "محول ترجمات العربية - تحويل من Windows-1256 إلى UTF-8" 
+            : "Arabic Subtitle Converter - Windows-1256 to UTF-8";
+        
+        // Update meta description
+        document.querySelector('meta[name="description"]').setAttribute('content',
+            currentLang === 'ar' 
+                ? "تحويل ملفات الترجمة العربية من ترميز Windows-1256 إلى UTF-8"
+                : "Convert Arabic subtitle files from Windows-1256 to UTF-8 encoding"
+        );
+
+        // Header
+        document.querySelector('header h1').textContent = lang.title;
+        document.querySelector('.subtitle').textContent = lang.subtitle;
+        
+        // Hero Section
+        document.querySelector('.hero h2').textContent = lang.heroTitle;
+        document.querySelector('.hero p').textContent = lang.heroText;
+        
+        // Features
+        const featureTexts = document.querySelectorAll('.feature p');
+        lang.features.forEach((text, index) => {
+            featureTexts[index].textContent = text;
+        });
+        
+        // Converter Section
+        document.querySelector('.file-upload-area p').textContent = lang.fileUpload;
+        document.querySelector('.file-select-btn').textContent = lang.fileButton;
+        document.querySelector('.file-requirements').textContent = lang.fileRequirements;
+        document.querySelector('.option label').textContent = lang.outputLabel;
+        
+        // Dropdown options
+        const formatOptions = document.querySelectorAll('#outputFormat option');
+        lang.formatOptions.forEach((text, index) => {
+            formatOptions[index].textContent = text;
+        });
+        
+        // Buttons
+        document.querySelector('.convert-btn span').textContent = lang.convertBtn;
+        document.querySelector('.download-btn span').textContent = lang.downloadBtn;
+        
+        // Footer - Modified to preserve images
+        document.querySelector('.footer-text p').textContent = lang.madeBy;
+        
+        // Update Discord link while preserving image
+        const discordLink = document.querySelector('.discord-link');
+        discordLink.innerHTML = `
+            <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" 
+                 alt="Discord" 
+                 class="discord-logo">
+            ${lang.joinCommunity}
+        `;
+        
+        // Update WhatsApp link while preserving image
+        const whatsappLink = document.querySelector('.whatsapp-link');
+        whatsappLink.innerHTML = `
+            <img src="images/whatsapp-color-svgrepo-com.svg" 
+                 alt="WhatsApp" 
+                 class="whatsapp-logo">
+            ${lang.contactUs}
+        `;
+        
+        document.querySelector('.copyright p').textContent = lang.copyright;
+    }
+
+    // Event listener
+    languageToggle.addEventListener('click', toggleLanguage);
+
+    // Add error handlers for images
+    document.querySelector('.discord-logo').onerror = function() {
+        this.src = 'images/discord-fallback.png';
+    };
+    document.querySelector('.whatsapp-logo').onerror = function() {
+        this.src = 'images/whatsapp-fallback.png';
+    };
+});
+
 // DOM Elements
 const fileInput = document.getElementById('subtitleFile');
 const dropZone = document.getElementById('dropZone');
@@ -202,6 +391,7 @@ function convertWindows1256ToUtf8(buffer) {
     }
     return utf8Str;
 }
+
 
 // Initialize
 convertBtn.disabled = true;
