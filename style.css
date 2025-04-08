@@ -63,61 +63,125 @@ header::before {
     z-index: 2;
 }
 
-/* Language Switcher Button - Compact and Non-Intrusive */
+/* Language Switcher Button - Top Left with Responsive Scaling */
 .language-switcher {
-    position: absolute;
-    top: 0.5rem;
-    left: 0.5rem;
-    z-index: 100;
+    position: fixed; /* Changed from absolute to fixed for better positioning */
+    top: 0.8rem;
+    left: 0.8rem;
+    z-index: 1000;
+    transition: all 0.3s ease;
 }
 
 .lang-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.3rem;
-    padding: 0.4rem 0.8rem;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 24px;
     color: white;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
     font-family: 'Tajawal', sans-serif;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     line-height: 1;
+    min-width: 70px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .lang-btn:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.25);
     transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 }
 
 .lang-text {
     display: inline-block;
+    transition: transform 0.2s ease;
 }
 
 .lang-icon {
-    font-size: 0.9rem;
+    font-size: 1rem;
+    transition: transform 0.2s ease;
 }
 
-/* Responsive adjustments - keeps same basic style */
+.lang-btn:hover .lang-text {
+    transform: translateX(1px);
+}
+
+.lang-btn:hover .lang-icon {
+    transform: rotate(10deg);
+}
+
+/* Responsive Scaling */
+@media (max-width: 1200px) {
+    .language-switcher {
+        top: 0.7rem;
+        left: 0.7rem;
+    }
+    
+    .lang-btn {
+        padding: 0.45rem 0.9rem;
+        font-size: 0.85rem;
+        min-width: 65px;
+    }
+    
+    .lang-icon {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .lang-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+        min-width: 60px;
+    }
+    
+    .lang-icon {
+        font-size: 0.9rem;
+    }
+}
+
 @media (max-width: 768px) {
     .language-switcher {
-        top: 0.4rem;
-        left: 0.4rem;
+        top: 0.6rem;
+        left: 0.6rem;
+    }
+    
+    .lang-btn {
+        padding: 0.35rem 0.7rem;
+        font-size: 0.75rem;
+        min-width: 55px;
+        border-radius: 20px;
+    }
+    
+    .lang-icon {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .language-switcher {
+        top: 0.5rem;
+        left: 0.5rem;
     }
     
     .lang-btn {
         padding: 0.3rem 0.6rem;
-        font-size: 0.8rem;
+        font-size: 0.7rem;
+        min-width: 50px;
+        gap: 0.3rem;
     }
     
     .lang-icon {
         font-size: 0.8rem;
     }
-}
+} 
 
 header h1 {
     font-size: 3.2rem;
