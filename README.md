@@ -23,7 +23,7 @@
 ## 🚀 Démarrage rapide | البدء السريع
 
 ### 🔹 Utilisation en ligne  
-Rendez-vous sur [GitHub Pages Link](#) *(Ajoutez votre lien après le déploiement)*
+Rendez-vous sur [GitHub Pages Link](https://zaikoss.github.io/arabic-subtitle-converter/) 
 
 ### 🔹 Développement local  
 ```bash
