@@ -884,6 +884,49 @@ footer {
     transform: scale(1.1);
 }
 
+/* GitHub Link Styling - Official Colors */
+.github-link {
+    color: var(--white);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+    font-size: 0.95rem;
+    padding: 0.5rem 0.8rem;
+    background-color: rgba(26, 28, 32, 0.2); /* GitHub dark color #1a1c20 */
+    border-radius: 4px;
+    border: 1px solid rgba(110, 118, 129, 0.3); /* GitHub border color #6e7681 */
+    margin-top: 0.5rem;
+}
+
+.github-link:hover {
+    background-color: rgba(48, 54, 61, 0.3); /* GitHub hover color #30363d */
+    color: var(--white);
+}
+
+.github-logo {
+    width: 22px;
+    height: 22px;
+    transition: var(--transition);
+    filter: none !important;
+}
+
+
+.github-link:hover .github-logo {
+    transform: scale(1.1);
+}
+
+/* Dark mode variation */
+.github-link.dark {
+    background-color: rgba(26, 28, 32, 0.4);
+    border-color: rgba(110, 118, 129, 0.5);
+}
+
+.github-link.dark:hover {
+    background-color: rgba(48, 54, 61, 0.6);
+}
+
 .copyright {
     text-align: center;
     margin-top: 2rem;

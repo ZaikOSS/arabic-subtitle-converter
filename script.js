@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const languageToggle = document.getElementById('languageToggle');
     const htmlElement = document.documentElement;
 
-    // Complete translations object
     const translations = {
         ar: {
             // Header
@@ -68,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
             madeBy: "صنع بفخر من قبل جابوني",
             joinCommunity: "انضم إلى مجتمعنا",
             contactUs: "تواصل معنا عبر الواتساب",
+            followOnGithub: "تابعنا على GitHub", // Added GitHub translation
             copyright: "© 2025 Japoni . جميع الحقوق محفوظة.",
             
             // Status Messages
@@ -108,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
             madeBy: "Proudly made by Japoni",
             joinCommunity: "Join our community",
             contactUs: "Contact us on WhatsApp",
+            followOnGithub: "Follow us on GitHub", // Added GitHub translation
             copyright: "© 2025 Japoni. All rights reserved.",
             
             // Status Messages
@@ -145,70 +146,53 @@ document.addEventListener('DOMContentLoaded', function() {
         htmlElement.lang = currentLang;
         htmlElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
         
-        // Update document title
+        // Update document title and meta description
         document.title = currentLang === 'ar' 
             ? "محول ترجمات العربية - تحويل من Windows-1256 إلى UTF-8" 
             : "Arabic Subtitle Converter - Windows-1256 to UTF-8";
         
-        // Update meta description
         document.querySelector('meta[name="description"]').setAttribute('content',
             currentLang === 'ar' 
                 ? "تحويل ملفات الترجمة العربية من ترميز Windows-1256 إلى UTF-8"
                 : "Convert Arabic subtitle files from Windows-1256 to UTF-8 encoding"
         );
 
-        // Header
-        document.querySelector('header h1').textContent = lang.title;
-        document.querySelector('.subtitle').textContent = lang.subtitle;
+        // Update header
+        document.getElementById('headerTitle').textContent = lang.title;
+        document.getElementById('headerSubtitle').textContent = lang.subtitle;
         
-        // Hero Section
-        document.querySelector('.hero h2').textContent = lang.heroTitle;
-        document.querySelector('.hero p').textContent = lang.heroText;
+        // Update hero section
+        document.getElementById('heroTitle').textContent = lang.heroTitle;
+        document.getElementById('heroText').textContent = lang.heroText;
         
-        // Features
-        const featureTexts = document.querySelectorAll('.feature p');
+        // Update features
+        const featureTexts = document.querySelectorAll('.feature-text');
         lang.features.forEach((text, index) => {
             featureTexts[index].textContent = text;
         });
         
-        // Converter Section
-        document.querySelector('.file-upload-area p').textContent = lang.fileUpload;
-        document.querySelector('.file-select-btn').textContent = lang.fileButton;
-        document.querySelector('.file-requirements').textContent = lang.fileRequirements;
-        document.querySelector('.option label').textContent = lang.outputLabel;
+        // Update converter section
+        document.getElementById('fileUploadText').textContent = lang.fileUpload;
+        document.getElementById('fileButtonText').textContent = lang.fileButton;
+        document.getElementById('fileRequirementsText').textContent = lang.fileRequirements;
+        document.getElementById('outputLabelText').textContent = lang.outputLabel;
         
-        // Dropdown options
+        // Update dropdown options
         const formatOptions = document.querySelectorAll('#outputFormat option');
         lang.formatOptions.forEach((text, index) => {
             formatOptions[index].textContent = text;
         });
         
-        // Buttons
-        document.querySelector('.convert-btn span').textContent = lang.convertBtn;
-        document.querySelector('.download-btn span').textContent = lang.downloadBtn;
+        // Update buttons
+        document.getElementById('convertBtnText').textContent = lang.convertBtn;
+        document.getElementById('downloadBtnText').textContent = lang.downloadBtn;
         
-        // Footer - Modified to preserve images
-        document.querySelector('.footer-text p').textContent = lang.madeBy;
-        
-        // Update Discord link while preserving image
-        const discordLink = document.querySelector('.discord-link');
-        discordLink.innerHTML = `
-            <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" 
-                 alt="Discord" 
-                 class="discord-logo">
-            ${lang.joinCommunity}
-        `;
-        
-        // Update WhatsApp link while preserving image
-        const whatsappLink = document.querySelector('.whatsapp-link');
-        whatsappLink.innerHTML = `
-            <img src="images/whatsapp-color-svgrepo-com.svg" 
-                 alt="WhatsApp" 
-                 class="whatsapp-logo">
-            ${lang.contactUs}
-        `;
-        
-        document.querySelector('.copyright p').textContent = lang.copyright;
+        // Update footer
+        document.getElementById('madeByText').textContent = lang.madeBy;
+        document.getElementById('joinCommunityText').textContent = lang.joinCommunity;
+        document.getElementById('followOnGithubText').textContent = lang.followOnGithub;
+        document.getElementById('contactUsText').textContent = lang.contactUs;
+        document.getElementById('copyrightText').textContent = lang.copyright;
     }
 
     // Event listener
@@ -220,6 +204,9 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     document.querySelector('.whatsapp-logo').onerror = function() {
         this.src = 'images/whatsapp-fallback.png';
+    };
+    document.querySelector('.github-logo').onerror = function() {
+        this.src = 'images/github-fallback.png';
     };
 });
 
